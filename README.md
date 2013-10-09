@@ -25,7 +25,7 @@ FunCaptcha currently requires cURL support and PHP 5.0 or later to work.
 2. Include that library in your php code.
 
 ```php
-require_once(“funcaptcha.php”);
+require_once('funcaptcha.php');
 ```
 
 4. Create a reference to the FunCaptcha object.
@@ -36,15 +36,15 @@ $funcaptcha = new FUNCAPTCHA();
 
 3. Echo the FunCaptcha object where you’d like it to appear, passing in your public key.
 
-echo $funcaptcha->getFunCaptcha(“YOUR_PUBLIC_KEY_HERE”);
+echo $funcaptcha->getFunCaptcha('YOUR_PUBLIC_KEY_HERE');
 4. When the user submits the form, where you are validating your form results, add a check to see if FunCaptcha is validated, passing in your private key.
 
 ```php
-$verified = $funcaptcha->checkResult(“YOUR_PRIVATE_KEY_HERE”);
+$verified = $funcaptcha->checkResult('YOUR_PRIVATE_KEY_HERE');
 if ($verified) {
-echo “Successfully passed!”;
+echo 'Successfully passed!';
 } else {
-echo “Failed verification, please try again.”;
+echo 'Failed verification, please try again.';
 }
 ```
 
