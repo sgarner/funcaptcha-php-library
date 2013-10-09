@@ -34,7 +34,7 @@ require_once('funcaptcha.php');
 $funcaptcha = new FUNCAPTCHA();
 ```
 
-3. Echo the FunCaptcha object where you’d like it to appear, passing in your public key.
+3. Echo the FunCaptcha object where you’d like it to appear, passing in your public key (You can get this key by [registering](https://www.funcaptcha.co/register/)) .
 
 ```php
 echo $funcaptcha->getFunCaptcha('YOUR_PUBLIC_KEY_HERE');
