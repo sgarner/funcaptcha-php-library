@@ -6,7 +6,7 @@ Spammers abuse your site, but users hate typing out twisty letters. This signifi
 
 Users complete these little games faster than other CAPTCHAs, with no frustrating failures and no typing. FunCaptcha works on all browsers and mobile devices. We’ve waived all fees and ongoing costs, so if you sign up right now, you won’t have to pay a thing. It’s easy to implement, so join thousands of other sites and try it!
 
-You can get started at our [website](https://www.funcaptcha.co)
+You can get started and view a demo at our [website](https://www.funcaptcha.co).
 
 ## PHP setup
 Our PHP code makes it easy to use FunCaptcha on your site. It’s just like adding any other popular captcha.
@@ -48,5 +48,5 @@ echo 'Failed verification, please try again.';
 }
 ```
 
-Everything should now be up and working. Please contact us if you have any issues or questions.
+Everything should now be up and working. Please [contact us](https://www.funcaptcha.co/contact-us/) if you have any issues or questions.
 
