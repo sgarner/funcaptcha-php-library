@@ -36,7 +36,10 @@ $funcaptcha = new FUNCAPTCHA();
 
 3. Echo the FunCaptcha object where you’d like it to appear, passing in your public key.
 
+```php
 echo $funcaptcha->getFunCaptcha('YOUR_PUBLIC_KEY_HERE');
+```
+
 4. When the user submits the form, where you are validating your form results, add a check to see if FunCaptcha is validated, passing in your private key.
 
 ```php
