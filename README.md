@@ -12,7 +12,7 @@ You can get started and view a demo at our [website](https://www.funcaptcha.co).
 Our PHP code makes it easy to use FunCaptcha on your site. It’s just like adding any other popular captcha.
 
 ## Registration
-You’ll need to register on this site and add your domains. Once you have registered, you can add your website URL which will generate a private and public key. These keys are used in the php library to authenticate your website with our servers.
+You’ll need to register on our [website](https://www.funcaptcha.co) and add your domains.  Once you have registered, you can add your website URL which will generate a private and public key. These keys are used in the php library to authenticate your website with our servers.
 
 ## Setup Requirements
 
