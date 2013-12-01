@@ -124,7 +124,7 @@ if ( ! class_exists('FUNCAPTCHA')):
 		{
 			//if failed to connect, display helpful message.
 			$style = "padding: 10px; border: 1px solid #b1abb2; background: #f1f1f1; color: #000000;";
-			$message = "Unable to load the <i>SwipeAds</i> FunCaptcha.  Please contact the site owner to report the problem.";
+			$message = "The CAPTCHA cannot be displayed. This may be a configuration or server problem. You may not be able to continue. Please visit our <a href='http://funcaptcha.co/status' target='_blank'>status page</a> for more information or to contact us.";
 			echo "<p style=\"$style\">$message</p>\n";
 		}
 	}
