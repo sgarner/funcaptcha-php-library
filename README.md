@@ -4,7 +4,7 @@ funcaptcha-php-library
 Stop spam with a free, fun, fast CAPTCHA game
 Spammers abuse your site, but users hate typing out twisty letters. This significantly reduces user conversions, and it’s just not OK any more. FunCaptcha presents a mini-game that blocks the bots while giving your users a few moments of fun. It’s a real security solution hardened by experts and automatically updated to provide the best protection.
 
-Users complete these little games faster than other CAPTCHAs, with no frustrating failures and no typing. FunCaptcha works on all browsers and mobile devices. We’ve waived all fees and ongoing costs, so if you sign up right now, you won’t have to pay a thing. It’s easy to implement, so join thousands of other sites and try it!
+Users complete these little games faster than other CAPTCHAs, with no frustrating failures and no typing. FunCaptcha works on all browsers and mobile devices. It’s easy to implement, so join thousands of other sites and try it!
 
 You can get started and view a demo at our [website](https://www.funcaptcha.co).
 

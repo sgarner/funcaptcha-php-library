@@ -18,6 +18,10 @@ require_once("funcaptcha.php");
 $funcaptcha = new FUNCAPTCHA();
 
 // OPTIONAL
+// Enable FunCaptcha lightbox mode, for more information view our FAQ at https://www.funcaptcha.co/faqs/
+$funcaptcha->setLightboxMode(1);
+
+// OPTIONAL
 // If FunCaptcha does not work correctly, enable debug mode.
 //$funcaptcha->debugMode(TRUE);
 
