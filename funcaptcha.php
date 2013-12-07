@@ -164,7 +164,7 @@ if ( ! class_exists('FUNCAPTCHA')):
 	 * @param boolean $submit_javascript_function_name - Name of javascript function to call on lightbox FunCaptcha completion.
 	 * @return boolean
 	 */
-	public function setLightboxMode($enable, $submit_button_id, $submit_javascript_function_name) {
+	public function setLightboxMode($enable, $submit_button_id=null, $submit_javascript_function_name=null) {
 		$this->funcaptcha_lightbox_mode = $enable;
 		$this->funcaptcha_lightbox_button_id = $submit_button_id;
 		$this->funcaptcha_lightbox_submit_javascript = $submit_javascript_function_name;
