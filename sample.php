@@ -19,15 +19,19 @@ $funcaptcha = new FUNCAPTCHA();
 
 // OPTIONAL
 // Enable FunCaptcha lightbox mode, for more information view our FAQ at https://www.funcaptcha.co/faqs/
-$funcaptcha->setLightboxMode(1);
+// $funcaptcha->setLightboxMode(1);
 
 // OPTIONAL
-// If FunCaptcha does not work correctly, enable debug mode.
-//$funcaptcha->debugMode(TRUE);
+// Change FunCaptcha visual theme https://www.funcaptcha.co/themes/
+// $funcaptcha->setTheme(0);
 
 // OPTIONAL
 // Set the security level of FunCaptcha, for more information view our FAQ at https://www.funcaptcha.co/faqs/
 //$funcaptcha->setSecurityLevel(0);
+
+// OPTIONAL
+// If FunCaptcha does not work correctly, enable debug mode.
+//$funcaptcha->debugMode(TRUE);
 
 // The form submits to itself, so see if the user has submitted the form.
 if (array_key_exists('submit', $_POST))
