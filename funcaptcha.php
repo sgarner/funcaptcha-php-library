@@ -33,11 +33,11 @@ if ( ! class_exists('FUNCAPTCHA')):
 	protected $funcaptcha_api_type = "php";
 	protected $funcaptcha_plugin_version = "0.0.7";
 	protected $funcaptcha_security_level = 0;
-
 	protected $funcaptcha_lightbox_mode = FALSE;
 	protected $funcaptcha_lightbox_button_id = "";
 	protected $funcaptcha_lightbox_submit_javascript = "";
 	protected $session_token;
+	protected $funcaptcha_theme = 0;
 
 	protected $version = '0.0.7';
 
@@ -92,6 +92,7 @@ if ( ! class_exists('FUNCAPTCHA')):
 			'lightbox'				=> $this->funcaptcha_lightbox_mode,
 			'lightbox_button_id'	=> $this->funcaptcha_lightbox_button_id,
 			'lightbox_submit_js'	=> $this->funcaptcha_lightbox_submit_javascript,
+			'theme'					=> $this->funcaptcha_theme,
 			'args'					=> $args
 		);
 
@@ -150,7 +151,20 @@ if ( ! class_exists('FUNCAPTCHA')):
 	 */
 	public function setSecurityLevel($security) {
 		$this->funcaptcha_security_level = $security;
-		$this->msgLog("DEBUG", "Security Level: '$this->funcaptcha_public_key'");
+		$this->msgLog("DEBUG", "Security Level: '$this->funcaptcha_security_level'");
+	}
+
+	/**
+	 * Set theme of FunCaptcha
+	 *
+	 * See here for options: https://www.funcaptcha.co/themes/
+	 *
+	 * @param int $theme - Security level
+	 * @return boolean
+	 */
+	public function setTheme($theme) {
+		$this->funcaptcha_theme = $theme;
+		$this->msgLog("DEBUG", "Theme: '$this->funcaptcha_theme'");
 	}
 
 	/**
