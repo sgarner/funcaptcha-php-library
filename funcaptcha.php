@@ -3,7 +3,7 @@
  * FunCaptcha
  * PHP Integration Library
  *
- * @version 0.0.7
+ * @version 0.0.8
  *
  * Copyright (c) 2013 SwipeAds -- http://www.funcaptcha.co
  * AUTHOR:
@@ -31,7 +31,7 @@ if ( ! class_exists('FUNCAPTCHA')):
 	protected $funcaptcha_challenge_url = '';
 	protected $funcaptcha_debug = FALSE;
 	protected $funcaptcha_api_type = "php";
-	protected $funcaptcha_plugin_version = "0.0.7";
+	protected $funcaptcha_plugin_version = "0.0.8";
 	protected $funcaptcha_security_level = 0;
 	protected $funcaptcha_lightbox_mode = FALSE;
 	protected $funcaptcha_lightbox_button_id = "";
@@ -39,7 +39,7 @@ if ( ! class_exists('FUNCAPTCHA')):
 	protected $session_token;
 	protected $funcaptcha_theme = 0;
 
-	protected $version = '0.0.7';
+	protected $version = '0.0.8';
 
 	/**
 	 * Constructor
