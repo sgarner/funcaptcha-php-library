@@ -20,9 +20,9 @@ FunCaptcha currently requires cURL support and PHP 5.0 or later to work.
 
 ## Installation
 
-1. Copy the funcaptcha.php file to a directory on your web server.
+1. Copy the funcaptcha.php and json.php files to a directory on your web server.
 
-2. Include that library in your php code.
+2. Include that funcaptcha.php in your php code.
 
 ```php
 require_once('funcaptcha.php');
@@ -51,5 +51,5 @@ echo 'Failed verification, please try again.';
 }
 ```
 
-Everything should now be up and working. Please [contact us](https://www.funcaptcha.co/contact-us/) if you have any issues or questions.
+Everything should now be up and working. Please [contact us](https://www.funcaptcha.co/contact-us/) if you have any issues or questions. Some further options are shown in the sample.php.
 
