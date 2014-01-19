@@ -39,7 +39,7 @@ if ( ! class_exists('FUNCAPTCHA')):
 	protected $session_token;
 	protected $funcaptcha_theme = 0;
 	protected $funcaptcha_proxy;
-
+	protected $funcaptcha_json_path = "json.php";
 	protected $version = '1.0.0';
 
 	/**
@@ -49,6 +49,10 @@ if ( ! class_exists('FUNCAPTCHA')):
 	public function __construct()
 	{		
 		$this->funcaptcha_host = FUNCAPTCHA_SERVER;
+
+		if ($this->funcaptcha_api_type == "vBulletin") {
+			$this->funcaptcha_json_path = DIR . "/includes/json.php";
+		}
 		
 		if ($this->funcaptcha_host == "")
 		{
@@ -168,7 +172,12 @@ if ( ! class_exists('FUNCAPTCHA')):
 		$this->msgLog("DEBUG", "Theme: '$this->funcaptcha_theme'");
 	}
 
-	// Set proxy..
+	/**
+	 * Set proxy for FunCaptcha
+	 *
+	 * @param int $proxy - Proxy server (including port, eg: 111.11.11.111:8080)
+	 * @return boolean
+	 */
 	public function setProxy($proxy) {
 		$this->funcaptcha_proxy = $proxy;
 		$this->msgLog("DEBUG", "Proxy: '$this->funcaptcha_proxy'");

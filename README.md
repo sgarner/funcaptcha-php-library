@@ -51,5 +51,5 @@ echo 'Failed verification, please try again.';
 }
 ```
 
-Everything should now be up and working. Please [contact us](https://www.funcaptcha.co/contact-us/) if you have any issues or questions.
+Everything should now be up and working. Please [contact us](https://www.funcaptcha.co/contact-us/) if you have any issues or questions. Some further options are shown in the sample.php.
 
