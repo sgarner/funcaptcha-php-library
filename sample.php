@@ -18,12 +18,16 @@ require_once("funcaptcha.php");
 $funcaptcha = new FUNCAPTCHA();
 
 // OPTIONAL
-// If FunCaptcha does not work correctly, enable debug mode.
+// If FunCaptcha does not work correctly, enable debug mode to help find the cause.
 //$funcaptcha->debugMode(TRUE);
 
 // OPTIONAL
 // Enable FunCaptcha lightbox mode, for more information view our FAQ at https://www.funcaptcha.co/faqs/
 // $funcaptcha->setLightboxMode(1);
+
+// OPTIONAL
+// Enable FunCaptcha to show a fallback CAPTCHA if a user has JavaScript turned off, we recommend it disabled (default) as bots generally browse with JavaScript off.
+// $funcaptcha->setNoJSFallback(1);
 
 // OPTIONAL
 // Change FunCaptcha visual theme - see https://www.funcaptcha.co/themes/ for examples
