@@ -38,6 +38,7 @@ if ( ! class_exists('FUNCAPTCHA')):
 	protected $funcaptcha_lightbox_submit_javascript = "";
 	protected $session_token;
 	protected $funcaptcha_theme = 0;
+	protected $funcaptcha_language = "en";
 	protected $funcaptcha_proxy;
 	protected $funcaptcha_json_path = "json.php";
 	protected $funcaptcha_nojs_fallback = false;
@@ -95,6 +96,7 @@ if ( ! class_exists('FUNCAPTCHA')):
 			'api_type'				=> $this->funcaptcha_api_type,
 			'plugin_version'		=> $this->funcaptcha_plugin_version,
 			'security_level'		=> $this->funcaptcha_security_level,
+			'language'				=> $this->funcaptcha_language,
 			'noscript_support'		=> $this->funcaptcha_nojs_fallback,
 			'lightbox'				=> $this->funcaptcha_lightbox_mode,
 			'lightbox_button_id'	=> $this->funcaptcha_lightbox_button_id,
@@ -172,6 +174,17 @@ if ( ! class_exists('FUNCAPTCHA')):
 	public function setTheme($theme) {
 		$this->funcaptcha_theme = $theme;
 		$this->msgLog("DEBUG", "Theme: '$this->funcaptcha_theme'");
+	}
+
+	/**
+	 * Set language of FunCaptcha
+	 *
+	 * @param string $language - language to set FunCaptxha, defaults to english if not available.
+	 * @return boolean
+	 */
+	public function setLanguage($language) {
+		$this->funcaptcha_language = $language;
+		$this->msgLog("DEBUG", "Language: '$this->funcaptcha_theme'");
 	}
 
 	/**
