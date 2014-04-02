@@ -179,7 +179,7 @@ if ( ! class_exists('FUNCAPTCHA')):
 	/**
 	 * Set language of FunCaptcha
 	 *
-	 * @param string $language - language to set FunCaptxha, defaults to english if not available.
+	 * @param string $language - language to set, defaults to english if not available.
 	 * @return boolean
 	 */
 	public function setLanguage($language) {
