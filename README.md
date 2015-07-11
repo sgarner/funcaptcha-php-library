@@ -28,31 +28,31 @@ This release of the FunCaptcha library requires PHP 5.3 or later to work.
 
 ## Manual Installation
 
-1. Copy the FunCaptcha.php file to a directory on your web server.
+1. Copy the `src/SwipeAds/FunCaptcha/FunCaptcha.php` file to a directory on your web server.
 
 2. Include it in your php code.
 
-```php
+  ```php
 require_once('path/to/FunCaptcha.php');
 ```
 
 ## Usage
 
-4. Create an instance of the FunCaptcha object, passing in your keys. Get your keys by [registering](https://www.funcaptcha.co/register/).
+1. Create an instance of the FunCaptcha object, passing in your keys. Get your keys by [registering](https://www.funcaptcha.co/register/).
 
-```php
-$funcaptcha = new SwipeAds\FunCaptcha\FunCaptcha('YOUR_PUBLIC_KEY', 'YOUR_PRIVATE_KEY');
-```
+  ```php
+   $funcaptcha = new SwipeAds\FunCaptcha\FunCaptcha('YOUR_PUBLIC_KEY', 'YOUR_PRIVATE_KEY');
+  ```
 
-3. Call the render() method to get the HTML for the FunCaptcha in your form.
+2. Call the render() method to get the HTML for the FunCaptcha in your form.
 
-```php
-echo $funcaptcha->render();
-```
+  ```php
+  echo $funcaptcha->render();
+  ```
 
-4. When the user submits the form, where you are validating your form results, add a check to see if FunCaptcha is validated.
+3. When the user submits the form, where you are validating your form results, add a check to see if FunCaptcha is validated.
 
-```php
+  ```php
 $verified = $funcaptcha->validate();
 if ($verified) {
 echo 'Successfully passed!';
