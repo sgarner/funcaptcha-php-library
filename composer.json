@@ -1,0 +1,22 @@
+{
+    "name": "swipeads/funcaptcha",
+    "description": "FunCaptcha stops internet abuse with a fun visual activity",
+    "minimum-stability": "stable",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Kevin Gosschalk",
+            "email": "kevin@funcaptcha.com"
+        },
+        {
+            "name": "Brandon Bakker",
+            "email": "brandon@funcaptcha.com"
+        }
+    ],
+    "require": {
+
+    },
+	"autoload": {
+        "psr-0": { "SwipeAds": "src/" }
+    }
+}
