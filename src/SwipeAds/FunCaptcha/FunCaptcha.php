@@ -6,7 +6,7 @@ class FunCaptcha
 {
     const VERSION = '2.0.0';
 
-    const HOST = 'funcaptcha.co';
+    const HOST = 'funcaptcha.com';
     const API_TYPE = 'php';
 
     const SECURITY_LEVEL_AUTOMATIC = 0;

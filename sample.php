@@ -9,7 +9,7 @@
 	Requirements:
 			- your web server uses PHP5.3 (or higher).
 			- you have read the installation instructions page at:
-				https://www.funcaptcha.co/setup
+				https://www.funcaptcha.com/setup
 */
 //******************************************************************************
 
@@ -23,7 +23,7 @@ use SwipeAds\FunCaptcha\FunCaptcha;
 $funcaptcha = new FunCaptcha('YOUR_PUBLIC_KEY', 'YOUR_PRIVATE_KEY');
 
 // OPTIONAL
-// Enable FunCaptcha lightbox mode, for more information view our FAQ at https://www.funcaptcha.co/faqs/
+// Enable FunCaptcha lightbox mode, for more information view our FAQ at https://www.funcaptcha.com/faqs/
 // $funcaptcha->setLightboxMode(true);
 
 // OPTIONAL
@@ -31,11 +31,11 @@ $funcaptcha = new FunCaptcha('YOUR_PUBLIC_KEY', 'YOUR_PRIVATE_KEY');
 // $funcaptcha->setAllowNoscript(true);
 
 // OPTIONAL
-// Change FunCaptcha visual theme - see https://www.funcaptcha.co/themes/ for examples
+// Change FunCaptcha visual theme - see https://www.funcaptcha.com/themes/ for examples
 // $funcaptcha->setTheme(1);
 
 // OPTIONAL
-// Set the security level of FunCaptcha, for more information view our FAQ at https://www.funcaptcha.co/faqs/
+// Set the security level of FunCaptcha, for more information view our FAQ at https://www.funcaptcha.com/faqs/
 //$funcaptcha->setSecurityLevel(0);
 
 
