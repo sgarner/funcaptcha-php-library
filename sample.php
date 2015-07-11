@@ -7,27 +7,28 @@
 	Purpose:	Provide an example of how to integrate an SwipeAds FunCaptcha on PHP web form.
 
 	Requirements:
-			- your web server uses PHP5 (or higher).
+			- your web server uses PHP5.3 (or higher).
 			- you have read the installation instructions page at:
 				https://www.funcaptcha.co/setup
 */
 //******************************************************************************
 
-// Instantiate the FUNCAPTCHA object.
-require_once("funcaptcha.php");
-$funcaptcha = new FUNCAPTCHA();
+// This is only necessary if you don't have a class autoloader. Adjust the path as necessary.
+// require_once('src/SwipeAds/FunCaptcha/FunCaptcha.php');
 
-// OPTIONAL
-// If FunCaptcha does not work correctly, enable debug mode to help find the cause.
-//$funcaptcha->debugMode(TRUE);
+// Import the FunCaptcha class
+use SwipeAds\FunCaptcha\FunCaptcha;
+
+// Instantiate a FunCaptcha object, passing in your keys.
+$funcaptcha = new FunCaptcha('YOUR_PUBLIC_KEY', 'YOUR_PRIVATE_KEY');
 
 // OPTIONAL
 // Enable FunCaptcha lightbox mode, for more information view our FAQ at https://www.funcaptcha.co/faqs/
-// $funcaptcha->setLightboxMode(1);
+// $funcaptcha->setLightboxMode(true);
 
 // OPTIONAL
 // Enable FunCaptcha to show a fallback CAPTCHA if a user has JavaScript turned off, we recommend it disabled (default) as bots generally browse with JavaScript off.
-// $funcaptcha->setNoJSFallback(1);
+// $funcaptcha->setAllowNoscript(true);
 
 // OPTIONAL
 // Change FunCaptcha visual theme - see https://www.funcaptcha.co/themes/ for examples
@@ -43,7 +44,7 @@ $funcaptcha = new FUNCAPTCHA();
 if (array_key_exists('submit', $_POST))
 {
 	// Use the funcaptcha object to get verified. Pass in Private Key.
-	$verified = $funcaptcha->checkResult("YOUR_PRIVATE_KEY_HERE");
+	$verified = $funcaptcha->validate();
 	// Check if verified to determine what to do.
 	if ($verified)
 	{
@@ -60,8 +61,8 @@ if (array_key_exists('submit', $_POST))
 	<p>Please enter your name: <input type="text" name="name"></p>
 	<?php
 		// Use the funcaptcha object to get the HTML code needed to
-		// load and run the FunCaptcha. Pass in Public Key.
-		 echo $funcaptcha->getFunCaptcha("YOUR_PUBLIC_KEY_HERE");
+		// load and run the FunCaptcha.
+		 echo $funcaptcha->render();
 	?>
 	<input type="Submit" name="submit" value=" GO ">
 </form>

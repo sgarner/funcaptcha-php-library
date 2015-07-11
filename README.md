@@ -16,34 +16,44 @@ You’ll need to register on our [website](https://www.funcaptcha.co) and add yo
 
 ## Setup Requirements
 
-FunCaptcha currently requires cURL support and PHP 5.0 or later to work.
+This release of the FunCaptcha library requires PHP 5.3 or later to work.
 
-## Installation
+## Installation from Composer
 
-1. Copy the funcaptcha.php and json.php files to a directory on your web server.
+1. Install [Composer](https://getcomposer.org/), if you haven't already.
 
-2. Include that funcaptcha.php in your php code.
+2. Run `composer require swipeads/funcaptcha` to add the library to your project.
+
+3. The library will be added to your vendors dir and available for autoloading.
+
+## Manual Installation
+
+1. Copy the FunCaptcha.php file to a directory on your web server.
+
+2. Include it in your php code.
 
 ```php
-require_once('funcaptcha.php');
+require_once('path/to/FunCaptcha.php');
 ```
 
-4. Create a reference to the FunCaptcha object.
+## Usage
+
+4. Create an instance of the FunCaptcha object, passing in your keys. Get your keys by [registering](https://www.funcaptcha.co/register/).
 
 ```php
-$funcaptcha = new FUNCAPTCHA();
+$funcaptcha = new SwipeAds\FunCaptcha\FunCaptcha('YOUR_PUBLIC_KEY', 'YOUR_PRIVATE_KEY');
 ```
 
-3. Echo the FunCaptcha object where you’d like it to appear, passing in your public key (You can get this key by [registering](https://www.funcaptcha.co/register/)) .
+3. Call the render() method to get the HTML for the FunCaptcha in your form.
 
 ```php
-echo $funcaptcha->getFunCaptcha('YOUR_PUBLIC_KEY_HERE');
+echo $funcaptcha->render();
 ```
 
-4. When the user submits the form, where you are validating your form results, add a check to see if FunCaptcha is validated, passing in your private key.
+4. When the user submits the form, where you are validating your form results, add a check to see if FunCaptcha is validated.
 
 ```php
-$verified = $funcaptcha->checkResult('YOUR_PRIVATE_KEY_HERE');
+$verified = $funcaptcha->validate();
 if ($verified) {
 echo 'Successfully passed!';
 } else {
