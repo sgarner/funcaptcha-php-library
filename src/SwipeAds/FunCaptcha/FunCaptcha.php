@@ -17,21 +17,21 @@ class FunCaptcha
     const LANG_DEFAULT = 'en';
 
     /**
-     * FunCaptcha public key
+     * FunCaptcha public key.
      *
      * @var string
      */
     protected $publicKey;
 
     /**
-     * FunCaptcha private key
+     * FunCaptcha private key.
      *
      * @var string
      */
     protected $privateKey;
 
     /**
-     * Form field name
+     * Form field name.
      *
      * @var string
      */
@@ -123,6 +123,7 @@ class FunCaptcha
 
     /**
      * @param string $publicKey
+     *
      * @return $this
      */
     public function setPublicKey($publicKey)
@@ -142,6 +143,7 @@ class FunCaptcha
 
     /**
      * @param string $privateKey
+     *
      * @return $this
      */
     public function setPrivateKey($privateKey)
@@ -161,6 +163,7 @@ class FunCaptcha
 
     /**
      * @param string $fieldName
+     *
      * @return $this
      */
     public function setFieldName($fieldName)
@@ -171,7 +174,7 @@ class FunCaptcha
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isLightboxMode()
     {
@@ -179,7 +182,8 @@ class FunCaptcha
     }
 
     /**
-     * @param boolean $lightboxMode
+     * @param bool $lightboxMode
+     *
      * @return $this
      */
     public function setLightboxMode($lightboxMode)
@@ -199,6 +203,7 @@ class FunCaptcha
 
     /**
      * @param string $lightboxButtonId
+     *
      * @return $this
      */
     public function setLightboxButtonId($lightboxButtonId)
@@ -218,6 +223,7 @@ class FunCaptcha
 
     /**
      * @param string $lightboxSubmitJavascript
+     *
      * @return $this
      */
     public function setLightboxCallbackName($lightboxCallbackName)
@@ -236,7 +242,7 @@ class FunCaptcha
     }
 
     /**
-     * Set security level of FunCaptcha
+     * Set security level of FunCaptcha.
      *
      * Possible options are:
      * 0 - Automatic-- security rises for suspicious users
@@ -245,6 +251,7 @@ class FunCaptcha
      * See our website for more details on these options
      *
      * @param int $securityLevel
+     *
      * @return $this
      */
     public function setSecurityLevel($securityLevel)
@@ -264,6 +271,7 @@ class FunCaptcha
 
     /**
      * @param int $theme
+     *
      * @return $this
      */
     public function setTheme($theme)
@@ -283,6 +291,7 @@ class FunCaptcha
 
     /**
      * @param string $language
+     *
      * @return $this
      */
     public function setLanguage($language)
@@ -293,7 +302,7 @@ class FunCaptcha
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isAllowNoscript()
     {
@@ -301,7 +310,8 @@ class FunCaptcha
     }
 
     /**
-     * @param boolean $allowNoscript
+     * @param bool $allowNoscript
+     *
      * @return $this
      */
     public function setAllowNoscript($allowNoscript)
@@ -312,30 +322,31 @@ class FunCaptcha
     }
 
     /**
-     * Fetch session token and return HTML for rendering the FunCaptcha
+     * Fetch session token and return HTML for rendering the FunCaptcha.
+     *
+     * @throws \Exception
      *
      * @return string
-     * @throws \Exception
      */
     public function render()
     {
         // send your public key, your site name, the users ip and browser type.
-        $data = array(
-            'public_key' => $this->getPublicKey(),
-            'site' => $_SERVER["SERVER_NAME"],
-            'userip' => $this->determineClientIp(),
-            'userbrowser' => $_SERVER['HTTP_USER_AGENT'],
-            'api_type' => self::API_TYPE,
-            'plugin_version' => self::VERSION,
-            'security_level' => $this->getSecurityLevel(),
-            'language' => $this->getLanguage(),
-            'noscript_support' => $this->isAllowNoscript(),
-            'lightbox' => $this->isLightboxMode(),
+        $data = [
+            'public_key'         => $this->getPublicKey(),
+            'site'               => $_SERVER['SERVER_NAME'],
+            'userip'             => $this->determineClientIp(),
+            'userbrowser'        => $_SERVER['HTTP_USER_AGENT'],
+            'api_type'           => self::API_TYPE,
+            'plugin_version'     => self::VERSION,
+            'security_level'     => $this->getSecurityLevel(),
+            'language'           => $this->getLanguage(),
+            'noscript_support'   => $this->isAllowNoscript(),
+            'lightbox'           => $this->isLightboxMode(),
             'lightbox_button_id' => $this->getLightboxButtonId(),
             'lightbox_submit_js' => $this->getLightboxCallbackName(),
-            'theme' => $this->getTheme(),
-            'args' => array(),
-        );
+            'theme'              => $this->getTheme(),
+            'args'               => [],
+        ];
 
         $sessionData = $this->post('/fc/gt/', $data);
 
@@ -349,13 +360,12 @@ class FunCaptcha
             throw new \Exception('Failed to retrieve challenge URL');
         }
 
-        $scriptUrl = 'https://' . $this->host . $this->challengeUrl . '?cache=' . time();
+        $scriptUrl = 'https://'.$this->host.$this->challengeUrl.'?cache='.time();
 
         if ($this->isAllowNoscript()) {
             $fallbackHtml = $sessionData->noscript;
-        }
-        else {
-            $fallbackHtml = <<<HTML
+        } else {
+            $fallbackHtml = <<<'HTML'
 <noscript><p>Please enable JavaScript to continue.</p></noscript>
 HTML;
         }
@@ -371,49 +381,53 @@ HTML;
     }
 
     /**
-     * Check if the submitted token is valid
+     * Check if the submitted token is valid.
+     *
+     * @throws \Exception
      *
      * @return bool
-     * @throws \Exception
      */
     public function validate()
     {
-        $data = array(
-            'private_key' => $this->privateKey,
-            'session_token' => $_POST[$this->fieldName],
+        $data = [
+            'private_key'     => $this->privateKey,
+            'session_token'   => $_POST[$this->fieldName],
             'fc_rc_challenge' => isset($_POST['fc_rc_challenge']) ? $_POST['fc_rc_challenge'] : null,
-        );
+        ];
         $result = $this->post('/fc/v/', $data);
 
         return $result->solved;
     }
 
     /**
-     * Send a POST request to the FunCaptcha API and return decoded JSON response object
+     * Send a POST request to the FunCaptcha API and return decoded JSON response object.
      *
      * @param string $path
-     * @param array $data
-     * @return object
+     * @param array  $data
+     *
      * @throws \Exception
+     *
+     * @return object
      */
-    protected function post($path, array $data) {
+    protected function post($path, array $data)
+    {
         $data_string = http_build_query($data);
 
         $http_request = "POST $path HTTP/1.1\r\n";
         $http_request .= "Host: $this->host\r\n";
         $http_request .= "Content-Type: application/x-www-form-urlencoded\r\n";
-        $http_request .= "Content-Length: " . strlen($data_string) . "\r\n";
-        $http_request .= "User-Agent: FunCaptcha/PHP " . self::VERSION . "\r\n";
+        $http_request .= 'Content-Length: '.strlen($data_string)."\r\n";
+        $http_request .= 'User-Agent: FunCaptcha/PHP '.self::VERSION."\r\n";
         $http_request .= "Connection: Close\r\n";
         $http_request .= "\r\n";
-        $http_request .= $data_string . "\r\n";
+        $http_request .= $data_string."\r\n";
 
         $result = '';
-        $errno = $errstr = "";
-        $fs = fsockopen("ssl://" . $this->host, 443, $errno, $errstr, 10);
+        $errno = $errstr = '';
+        $fs = fsockopen('ssl://'.$this->host, 443, $errno, $errstr, 10);
 
         if (false == $fs) {
-            throw new \Exception("Could not open socket");
+            throw new \Exception('Could not open socket');
         }
 
         fwrite($fs, $http_request);
@@ -426,22 +440,20 @@ HTML;
     }
 
     /**
-     * Returns the remote user's IP address
+     * Returns the remote user's IP address.
      *
      * @return string
      */
     protected function determineClientIp()
     {
-        if (isset($_SERVER["HTTP_X_FORWARDED_FOR"])) {
-            return $_SERVER["HTTP_X_FORWARDED_FOR"];
-        }
-        else {
-            if (isset($_SERVER["REMOTE_ADDR"])) {
-                return $_SERVER["REMOTE_ADDR"];
-            }
-            else {
-                if (isset($_SERVER["HTTP_CLIENT_IP"])) {
-                    return $_SERVER["HTTP_CLIENT_IP"];
+        if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            return $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else {
+            if (isset($_SERVER['REMOTE_ADDR'])) {
+                return $_SERVER['REMOTE_ADDR'];
+            } else {
+                if (isset($_SERVER['HTTP_CLIENT_IP'])) {
+                    return $_SERVER['HTTP_CLIENT_IP'];
                 }
             }
         }
